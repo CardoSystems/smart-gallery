@@ -32,10 +32,10 @@ export default function Home() {
       <main className="container mx-auto px-4 py-12 max-w-7xl relative z-10">
         <header className="mb-12 text-center">
           <h1 className="text-5xl font-bold text-white mb-4 drop-shadow-lg">
-            Santa Eufemia
+            Tradicionais Festas de Santa Eufémia 2024
           </h1>
           <p className="text-xl text-white/90 max-w-2xl mx-auto mb-8 drop-shadow-md">
-            Festa Photography Collection
+            Galeria de Fotos
           </p>
           <div className="flex gap-4 justify-center mb-6">
             <button
@@ -46,7 +46,7 @@ export default function Home() {
                   : 'bg-white text-gray-700 hover:bg-gray-50'
               }`}
             >
-              19 April 2024
+              19 Abril 2024
             </button>
             <button
               onClick={() => setSelectedDate('20')}
@@ -56,7 +56,7 @@ export default function Home() {
                   : 'bg-white text-gray-700 hover:bg-gray-50'
               }`}
             >
-              20 April 2024
+              20 Abril 2024
             </button>
           </div>
           <div className="flex justify-center">
@@ -74,7 +74,7 @@ export default function Home() {
         <section className="mt-16 mb-8">
           <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 shadow-lg">
             <h2 className="text-2xl font-bold text-white mb-4 text-center drop-shadow-md">
-              Fotografo👇
+              A equipa Fotográfica👇
             </h2>
             <div 
               className="w-full h-[70vh] sm:h-[75vh] md:h-[65vh] lg:aspect-video lg:max-h-[80vh] xl:max-h-[70vh] rounded-lg overflow-hidden shadow-md relative"
