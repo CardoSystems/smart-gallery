@@ -72,12 +72,12 @@ export default function Home() {
         
         {/* Embedded Content Section */}
         <section className="mt-16 mb-8">
-          <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 shadow-lg">
+          <div className="w-full">
             <h2 className="text-2xl font-bold text-white mb-4 text-center drop-shadow-md">
               A equipa Fotográfica👇
             </h2>
             <div 
-              className="w-full h-[70vh] sm:h-[75vh] md:h-[65vh] lg:aspect-video lg:max-h-[80vh] xl:max-h-[70vh] rounded-lg overflow-hidden shadow-md relative"
+              className="w-full h-[90vh] overflow-hidden relative"
               onMouseEnter={(e) => {
                 document.body.style.overflow = 'hidden';
               }}
