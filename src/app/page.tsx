@@ -69,6 +69,35 @@ export default function Home() {
           photos={photos} 
           cdnBaseUrl="https://cdn.xperia.pt"
         />
+        
+        {/* Embedded Content Section */}
+        <section className="mt-16 mb-8">
+          <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 shadow-lg">
+            <h2 className="text-2xl font-bold text-white mb-4 text-center drop-shadow-md">
+              Fotografo👇
+            </h2>
+            <div 
+              className="w-full h-[60vh] sm:aspect-video sm:max-h-[80vh] rounded-lg overflow-hidden shadow-md relative"
+              onMouseEnter={(e) => {
+                document.body.style.overflow = 'hidden';
+              }}
+              onMouseLeave={(e) => {
+                document.body.style.overflow = 'auto';
+              }}
+              onWheel={(e) => {
+                e.stopPropagation();
+              }}
+            >
+              <iframe
+                src="https://same-cr6xi5okr4h-latest.netlify.app"
+                className="w-full h-full border-0 absolute inset-0"
+                loading="lazy"
+                title="Embedded Content"
+                allow="fullscreen"
+              />
+            </div>
+          </div>
+        </section>
       </main>
     </div>
   );
