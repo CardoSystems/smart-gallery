@@ -1,0 +1,20 @@
+{
+  "name": "Santa Eufemia - Photo Gallery",
+  "short_name": "Santa Eufemia",
+  "description": "Festa Photography Collection - Santa Eufemia 2024",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1e1b4b",
+  "theme_color": "#3b82f6",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "/icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["photo", "entertainment"],
+  "screenshots": []
+}
