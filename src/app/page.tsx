@@ -10,7 +10,7 @@ const generatePhotos = (date: '19' | '20'): Photo[] => {
   const photos: Photo[] = [];
   const dateFolder = date === '19' ? '1904-SD' : '2004-SD';
   
-  for (let i = 1; i <= 100; i++) {
+  for (let i = 1; i <= 150; i++) {
     photos.push({
       id: String(i),
       src: `/santaeufemia.pt/${dateFolder}/Festa-${i}.jpg`,
