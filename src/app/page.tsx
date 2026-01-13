@@ -77,7 +77,7 @@ export default function Home() {
               Fotografo👇
             </h2>
             <div 
-              className="w-full h-[60vh] sm:aspect-video sm:max-h-[80vh] rounded-lg overflow-hidden shadow-md relative"
+              className="w-full h-[70vh] sm:h-[75vh] md:h-[65vh] lg:aspect-video lg:max-h-[80vh] xl:max-h-[70vh] rounded-lg overflow-hidden shadow-md relative"
               onMouseEnter={(e) => {
                 document.body.style.overflow = 'hidden';
               }}
