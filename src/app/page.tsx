@@ -3,29 +3,23 @@
 import { useState } from 'react';
 import PhotoGallery from '@/components/PhotoGallery';
 import { WeatherWidget } from '@/components/WeatherWidget';
-import { Photo } from '@/types/gallery';
-
-// Generate photos for a specific date
-const generatePhotos = (date: '19' | '20'): Photo[] => {
-  const photos: Photo[] = [];
-  const dateFolder = date === '19' ? '1904-SD' : '2004-SD';
-  
-  for (let i = 1; i <= 150; i++) {
-    photos.push({
-      id: String(i),
-      src: `/santaeufemia.pt/${dateFolder}/Festa-${i}.jpg`,
-      width: 1920,
-      height: 1280,
-      alt: `Festa Photo ${i}`,
-    });
-  }
-  
-  return photos;
-};
+import { generatePhotosStatic } from '@/utils/photoGenerator';
+import { 
+  PHOTO_SETS, 
+  getPhotoSetIds, 
+  getImageCount,
+  type PhotoSet 
+} from '@/config/photo-sets.config';
 
 export default function Home() {
-  const [selectedDate, setSelectedDate] = useState<'19' | '20'>('19');
-  const photos = generatePhotos(selectedDate);
+  const photoSetIds = getPhotoSetIds();
+  const defaultId = photoSetIds[0] || '19';
+  const [selectedId, setSelectedId] = useState<string>(defaultId);
+  
+  // Get the selected photo set
+  const selectedPhotoSet = PHOTO_SETS.find((set) => set.id === selectedId);
+  const imageCount = getImageCount(selectedId);
+  const photos = generatePhotosStatic(selectedId, imageCount);
 
   return (
     <div className="min-h-screen relative">
@@ -37,27 +31,20 @@ export default function Home() {
           <p className="text-xl text-white/90 max-w-2xl mx-auto mb-8 drop-shadow-md">
             Galeria de Fotos
           </p>
-          <div className="flex gap-4 justify-center mb-6">
-            <button
-              onClick={() => setSelectedDate('19')}
-              className={`px-6 py-2 rounded-lg shadow-sm transition-all duration-200 font-semibold ${
-                selectedDate === '19'
-                  ? 'bg-blue-500 text-white shadow-md'
-                  : 'bg-white text-gray-700 hover:bg-gray-50'
-              }`}
-            >
-              19 Abril 2024
-            </button>
-            <button
-              onClick={() => setSelectedDate('20')}
-              className={`px-6 py-2 rounded-lg shadow-sm transition-all duration-200 font-semibold ${
-                selectedDate === '20'
-                  ? 'bg-blue-500 text-white shadow-md'
-                  : 'bg-white text-gray-700 hover:bg-gray-50'
-              }`}
-            >
-              20 Abril 2024
-            </button>
+          <div className="flex gap-4 justify-center mb-6 flex-wrap">
+            {PHOTO_SETS.map((photoSet) => (
+              <button
+                key={photoSet.id}
+                onClick={() => setSelectedId(photoSet.id)}
+                className={`px-6 py-2 rounded-lg shadow-sm transition-all duration-200 font-semibold ${
+                  selectedId === photoSet.id
+                    ? 'bg-blue-500 text-white shadow-md'
+                    : 'bg-white text-gray-700 hover:bg-gray-50'
+                }`}
+              >
+                {photoSet.date}
+              </button>
+            ))}
           </div>
           <div className="flex justify-center">
             <WeatherWidget />
@@ -65,7 +52,7 @@ export default function Home() {
         </header>
         
         <PhotoGallery 
-          key={selectedDate}
+          key={selectedId}
           photos={photos} 
           cdnBaseUrl="https://cdn.xperia.pt"
         />

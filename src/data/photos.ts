@@ -1,23 +1,28 @@
-import { GalleryConfig, Photo } from '@/types/gallery';
+import { GalleryConfig } from '@/types/gallery';
+import { generatePhotosStatic } from '@/utils/photoGenerator';
 
-// Generate all 150 photos
-const generatePhotos = (): Photo[] => {
-  const photos: Photo[] = [];
-  
-  for (let i = 1; i <= 150; i++) {
-    photos.push({
-      id: String(i),
-      src: `/santaeufemia.pt/1904-HD/Festa-${i}.jpg`,
-      width: 1920,
-      height: 1280,
-      alt: `Festa Photo ${i}`,
-    });
-  }
-  
-  return photos;
-};
-
+/**
+ * Static gallery configuration using the photo sets config
+ * The first available photo set will be displayed by default
+ * 
+ * To add a new date:
+ * 1. Edit src/config/photo-sets.config.ts
+ * 2. Add your new date entry to the PHOTO_SETS array
+ * 3. Run: npm run detect-images
+ */
 export const galleryConfig: GalleryConfig = {
   cdnBaseUrl: 'https://cdn.xperia.pt',
-  photos: generatePhotos(),
+  photos: generatePhotosStatic('19'), // Default to first photo set
 };
+
+/**
+ * Alternative: Use this in your page component for dynamic detection
+ * 
+ * Example:
+ * import { getGalleryConfig } from '@/utils/photoGenerator';
+ * 
+ * export default async function GalleryPage() {
+ *   const config = await getGalleryConfig();
+ *   return <PhotoGallery {...config} />;
+ * }
+ */

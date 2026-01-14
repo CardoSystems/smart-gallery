@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import swManager from '@/utils/swManager';
 
 interface BeforeInstallPromptEvent extends Event {
   prompt: () => Promise<void>;
@@ -12,6 +13,7 @@ export function PWA() {
   const [deferredPrompt, setDeferredPrompt] = useState<BeforeInstallPromptEvent | null>(null);
   const [showInstallPrompt, setShowInstallPrompt] = useState(false);
   const [isInstalled, setIsInstalled] = useState(false);
+  const [isOnline, setIsOnline] = useState(true);
 
   useEffect(() => {
     // Check if already installed
@@ -20,17 +22,23 @@ export function PWA() {
       return;
     }
 
+    // Set initial online status
+    setIsOnline(navigator.onLine);
+
+    // Listen for online/offline status changes
+    const unsubscribeOnlineStatus = swManager.onOnlineStatusChange((online) => {
+      setIsOnline(online);
+      if (!online) {
+        console.log('⚠️ App is now offline - using cached content');
+      } else {
+        console.log('✅ App is back online');
+      }
+    });
+
     // Register service worker
-    if ('serviceWorker' in navigator) {
+    if (swManager.isSupported()) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker
-          .register('/sw.js')
-          .then((registration) => {
-            console.log('Service Worker registered:', registration);
-          })
-          .catch((error) => {
-            console.log('Service Worker registration failed:', error);
-          });
+        swManager.register();
       });
     }
 
@@ -50,15 +58,17 @@ export function PWA() {
       setIsInstalled(true);
       setShowInstallPrompt(false);
       setDeferredPrompt(null);
-      console.log('PWA installed successfully');
+      console.log('📱 PWA installed successfully');
     };
 
     window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
     window.addEventListener('appinstalled', handleAppInstalled);
 
+    // Cleanup
     return () => {
       window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
       window.removeEventListener('appinstalled', handleAppInstalled);
+      unsubscribeOnlineStatus();
     };
   }, []);
 
@@ -70,9 +80,9 @@ export function PWA() {
       const { outcome } = await deferredPrompt.userChoice;
       
       if (outcome === 'accepted') {
-        console.log('User accepted the install prompt');
+        console.log('✅ User accepted the install prompt');
       } else {
-        console.log('User dismissed the install prompt');
+        console.log('❌ User dismissed the install prompt');
       }
       
       setDeferredPrompt(null);
