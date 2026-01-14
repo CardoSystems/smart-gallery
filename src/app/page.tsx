@@ -71,26 +71,17 @@ export default function Home() {
         />
         
         {/* Embedded Content Section */}
-        <section className="mt-16 mb-8">
-          <div className="w-full">
+        <section className="mt-16 mb-8 px-4">
+          <div className="w-full max-w-6xl mx-auto">
             <h2 className="text-2xl font-bold text-white mb-4 text-center drop-shadow-md">
               A equipa Fotográfica👇
             </h2>
             <div 
-              className="w-full h-[90vh] overflow-hidden relative"
-              onMouseEnter={(e) => {
-                document.body.style.overflow = 'hidden';
-              }}
-              onMouseLeave={(e) => {
-                document.body.style.overflow = 'auto';
-              }}
-              onWheel={(e) => {
-                e.stopPropagation();
-              }}
+              className="w-full h-[70vh] md:h-[85vh] overflow-hidden relative pointer-events-none hover:pointer-events-auto rounded-xl shadow-2xl ring-1 ring-white/10"
             >
               <iframe
                 src="https://same-cr6xi5okr4h-latest.netlify.app"
-                className="w-full h-full border-0 absolute inset-0"
+                className="w-full h-full border-0 absolute inset-0 pointer-events-auto rounded-xl"
                 loading="lazy"
                 title="Embedded Content"
                 allow="fullscreen"

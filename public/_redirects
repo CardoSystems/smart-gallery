@@ -1,0 +1,8 @@
+# Redirect trailing slashes (optional, based on configuration)
+# These are examples - adjust based on your URL structure
+
+# Redirect www to non-www (if needed)
+# https://www.example.com/* https://example.com/:splat 301
+
+# SPA routing - if needed for client-side navigation
+# /* /index.html 200

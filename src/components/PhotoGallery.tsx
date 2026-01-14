@@ -163,14 +163,8 @@ export default function PhotoGallery({ photos, cdnBaseUrl }: PhotoGalleryProps) 
   useEffect(() => {
     setMounted(true);
 
-    // Filter out photos that failed to load
-    const validPhotos = photos.filter(photo => {
-      const url = `${cdnBaseUrl}${photo.src}`;
-      return !imageCache.has(url) || imageCache.has(url);
-    });
-
-    // Create Fancybox items from valid photos only
-    const fancyboxItems = validPhotos.map(photo => ({
+    // Create Fancybox items from photos
+    const fancyboxItems = photos.map(photo => ({
       src: `${cdnBaseUrl}${photo.src}`,
       thumb: `${cdnBaseUrl}${photo.src}`,
       caption: photo.alt,
