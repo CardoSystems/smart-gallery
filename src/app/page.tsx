@@ -26,7 +26,7 @@ export default function Home() {
       <main className="container mx-auto px-4 py-12 max-w-7xl relative z-10">
         <header className="mb-12 text-center">
           <h1 className="text-5xl font-bold text-white mb-4 drop-shadow-lg">
-            Tradicionais Festas de Santa Eufémia 2024
+            Tradicionais Festas de Santa Eufémia 2025
           </h1>
           <p className="text-xl text-white/90 max-w-2xl mx-auto mb-8 drop-shadow-md">
             Galeria de Fotos
