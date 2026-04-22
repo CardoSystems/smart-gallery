@@ -54,7 +54,7 @@ export default function Home() {
         <PhotoGallery 
           key={selectedId}
           photos={photos} 
-          cdnBaseUrl="https://cdn.xperia.pt"
+          cdnBaseUrl="https://cdn.cardoso.dpdns.org"
         />
         
         {/* Embedded Content Section */}

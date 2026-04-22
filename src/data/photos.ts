@@ -11,7 +11,7 @@ import { generatePhotosStatic } from '@/utils/photoGenerator';
  * 3. Run: npm run detect-images
  */
 export const galleryConfig: GalleryConfig = {
-  cdnBaseUrl: 'https://cdn.xperia.pt',
+  cdnBaseUrl: 'https://cdn.cardoso.dpdns.org',
   photos: generatePhotosStatic('19'), // Default to first photo set
 };
 

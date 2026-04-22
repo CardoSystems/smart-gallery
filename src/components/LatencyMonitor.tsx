@@ -13,7 +13,7 @@ export const LatencyMonitor = () => {
 
   useEffect(() => {
     const checkLatency = async () => {
-      const cdnUrl = 'https://cdn.xperia.pt/';
+      const cdnUrl = 'https://cdn.cardoso.dpdns.org';
       const startTime = performance.now();
 
       try {

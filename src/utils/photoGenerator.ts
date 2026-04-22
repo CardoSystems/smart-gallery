@@ -72,7 +72,7 @@ export const generatePhotosStatic = (
  * Get gallery config with auto-detected images
  */
 export const getGalleryConfig = async (
-  cdnBaseUrl: string = 'https://pub-81eff847b6304111bc7778c925cdabbf.r2.dev',
+  cdnBaseUrl: string = 'https://cdn.cardoso.dpdns.org',
   photoSetId: string = '19',
   maxImages: number = 200
 ): Promise<GalleryConfig> => {

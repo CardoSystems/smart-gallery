@@ -17,7 +17,7 @@ interface ImageDetectorUIProps {
 }
 
 export default function ImageDetectorUI({
-  cdnBaseUrl = 'https://cdn.xperia.pt',
+  cdnBaseUrl = 'https://cdn.cardoso.dpdns.org',
   basePath = '/santaeufemia.pt/1904-SD',
   filePattern = (i) => `Festa-${i}.jpg`,
   maxImages = 200,
